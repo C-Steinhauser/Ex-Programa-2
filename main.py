@@ -11,7 +11,7 @@ NEGRITO = "\033[1m"
 RESET = "\033[0m"
 
 
-def main():
+def jogar():
     print(f"{CIANO}Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!{RESET}\n")
 
     nome = input("Qual seu nome? ").strip().upper()
@@ -73,7 +73,7 @@ def main():
                         print(f"\n{ROXO}HEY! Você passou para o nível MEDIO!{RESET}")
                     elif indice_premio == 6:
                         nivel = "dificil"
-                        print(f"\n{ROXO}HEY! Você passou para o nível MEDIO!{RESET}")
+                        print(f"\n{ROXO}HEY! Você passou para o nível DIFICIL!{RESET}")
 
                     input("Aperte ENTER para continuar...\n")
                     numero_questao += 1
@@ -127,7 +127,6 @@ def main():
                     print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
 
                 input("Aperte ENTER para continuar...\n")
-                numero_questao += 1
                 break
 
             elif resposta == "parar":
@@ -150,6 +149,23 @@ def main():
                 if confirmacao == "S":
                     print(f"\nOk! Você parou e seu prêmio é de R$ {premio_atual:.2f}")
                     return
+
+                input("Aperte ENTER para continuar...\n")
+                print(questao_para_texto(questao, numero_questao))
+
+
+def main():
+    while True:
+        jogar()
+
+        novamente = input("\nDeseja jogar novamente? [S/N] ").strip().upper()
+        while novamente not in ["S", "N"]:
+            print(f"{AMARELO}Opção inválida!{RESET}")
+            novamente = input("Deseja jogar novamente? [S/N] ").strip().upper()
+
+        if novamente == "N":
+            break
+
 
 if __name__ == "__main__":
     main()
