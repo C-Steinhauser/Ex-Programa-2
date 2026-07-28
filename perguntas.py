@@ -28,6 +28,11 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'opcoes': {'A': '25 de Janeiro', 'B': '24 de Março', 'C': '9 de Julho', 'D': '12 de Novembro'},
           'correta': 'A'},
 
+          {'titulo': 'Qual destes idiomas é falado na Alemanha?',
+          'nivel': 'facil',
+          'opcoes': {'A': 'Klingon','B': 'Élfico','C': 'Alemão','D': 'Khuzdul'},
+          'correta': 'C'}
+
          {'titulo': 'Qual destas não é uma fruta?',
           'nivel': 'facil',
           'opcoes': {'A': 'Laranja', 'B': 'Maça', 'C': 'Tomate', 'D': 'Abacate'},
@@ -78,6 +83,11 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'opcoes': {'A': 'Marie Curie', 'B': 'Paul Erdős', 'C': 'Clive W.J. Granger', 'D': 'Maria Ressa'},
           'correta': 'A'},
 
+         {'titulo': 'Quantas estrelas há acima do escudo da seleção da Alemanha em sua camisa?',
+          'nivel': 'medio',
+          'opcoes': {'A': '3','B': '4','C': '5','D': '6'},
+          'correta': 'B'}
+
          {'titulo': 'Quem é considerada a primeira pessoa programadora do mundo?!',
           'nivel': 'medio',
           'opcoes': {'A': 'Marie Curie', 'B': 'Alan Turing', 'C': 'Ada Lovelace', 'D': 'Edsger Dijkstra'},
@@ -92,6 +102,11 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'nivel': 'medio',
           'opcoes': {'A': 'Collatz', 'B': 'Goldbach', 'C': 'Poincaré', 'D': 'Hodge'},
           'correta': 'A'},
+
+         {'titulo': 'Qual destas marcas de automóveis é alemã?',
+          'nivel': 'medio',
+          'opcoes': {'A': 'Toyota','B': 'Hyundai','C': 'BMW','D': 'Volvo'},
+          'correta': 'C'}
 
          {'titulo': 'Como faço para chamar o SAMU?',
           'nivel': 'medio',
@@ -138,6 +153,11 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'opcoes': {'A': '1906', 'B': '1905', 'C': '1920', 'D': '1921'},
           'correta': 'D'},
 
+          {'titulo': 'Qual destes doces é tradicionalmente associado à Alemanha?',
+          'nivel': 'medio',
+          'opcoes': {'A': 'Floresta Negra','B': 'Torta alemã','C': 'Chucrute','D': 'Tiramisù'},
+          'correta': 'A'}
+
          {'titulo': 'Qual o número atômico do nitrogênio?',
           'nivel': 'dificil',
           'opcoes': {'A': '9', 'B': '7', 'C': '6', 'D': '8'},
@@ -147,6 +167,11 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'nivel': 'dificil',
           'opcoes': {'A': '120º C', 'B': '15º C', 'C': '-210º C', 'D': '-180º C'},
           'correta': 'C'},
+
+        {'titulo': 'Quem marcou o gol do título da Alemanha na final da Copa do Mundo de 2014?',
+          'nivel': 'dificil',
+          'opcoes': {'A': 'Miroslav Klose', 'B': 'Mesut Özil', 'C': 'Mario Götze', 'D': 'Thomas Müller'},
+          'correta': 'C'}
          
          {'titulo': 'Quantos gols Pelé fez oficialmente?',
           'nivel': 'dificil',
