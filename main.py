@@ -1,6 +1,7 @@
 from perguntas import quest
 from funcoes import *
 
+
 def main():
     print("Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!\n")
 
@@ -13,7 +14,6 @@ def main():
     print("O jogo já vai começar! Lá vem a primeira questão!\n")
 
     problemas = valida_questoes(quest)
-
     for erro in problemas:
         if erro != {}:
             print("A base de questões está inconsistente.")
@@ -21,31 +21,109 @@ def main():
 
     questoes = transforma_base(quest)
 
+    nivel = "facil"
+    questoes_sorteadas = []
+    premios = [1000, 5000, 10000, 30000, 50000, 100000, 300000, 500000, 1000000]
+    indice_premio = 0
+    numero_questao = 1
+    pulos = 3
+    ajudas = 2
+
     print("Vamos começar com questões do nível FACIL!")
     input("Aperte ENTER para continuar...\n")
 
-    nivel = "facil"
-    questoes_sorteadas = []
+    while True:
+        questao = sorteia_questao_inedita(questoes, nivel, questoes_sorteadas)
+        ajuda_usada_nesta_questao = False
 
-    questao = sorteia_questao_inedita(questoes, nivel, questoes_sorteadas)
+        print(questao_para_texto(questao, numero_questao))
 
-    print(questao_para_texto(questao, 1))
+        while True:
+            opcoes_validas = ["A", "B", "C", "D", "ajuda", "pula", "parar"]
+            resposta = input("\nQual sua resposta?! ").strip()
 
-    opcoes_validas = ["A", "B", "C", "D", "ajuda", "pula", "parar"]
+            while resposta not in opcoes_validas:
+                print("Opção inválida!")
+                print('As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!\n')
+                resposta = input("Qual sua resposta?! ").strip()
 
-    resposta = input("\nQual sua resposta?! ")
+            if resposta in ["A", "B", "C", "D"]:
+                if resposta == questao["correta"]:
+                    indice_premio += 1
+                    print(f"\nVocê acertou! Seu prêmio atual é de R$ {premios[indice_premio - 1]:.2f}")
 
-    while resposta not in opcoes_validas:
-        print("Opção inválida!")
-        print('As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!\n')
-        resposta = input("Qual sua resposta?! ")
+                    if indice_premio == len(premios):
+                        print("\nPARABÉNS, você zerou o jogo e ganhou um milhão de reais!")
+                        return
 
-    if resposta == questao["correta"]:
-        print("\nVocê acertou!")
-    else:
-        print("\nQue pena! Você errou!")
+                    if indice_premio == 3:
+                        nivel = "medio"
+                        print("\nHEY! Você passou para o nível MEDIO!")
+                    elif indice_premio == 6:
+                        nivel = "dificil"
+                        print("\nHEY! Você passou para o nível DIFICIL!")
 
-    print(f"Você digitou: {resposta}")
+                    input("Aperte ENTER para continuar...\n")
+                    numero_questao += 1
+                    break
+                else:
+                    print("\nQue pena! Você errou e vai sair sem nada :(")
+                    return
+
+            elif resposta == "ajuda":
+                if ajudas == 0:
+                    print("Não deu! Você não tem mais direito a ajudas!")
+                    input("Aperte ENTER para continuar...\n")
+                    print(questao_para_texto(questao, numero_questao))
+                    continue
+
+                if ajuda_usada_nesta_questao:
+                    print("Não deu! Você já pediu ajuda nesta questão!")
+                    input("Aperte ENTER para continuar...\n")
+                    print(questao_para_texto(questao, numero_questao))
+                    continue
+
+                ajudas -= 1
+                ajuda_usada_nesta_questao = True
+
+                print(f"Ok, lá vem ajuda! Você ainda tem {ajudas} ajudas!")
+                input("Aperte ENTER para continuar...\n")
+                print(gera_ajuda(questao))
+                input("Aperte ENTER para continuar...\n")
+                print(questao_para_texto(questao, numero_questao))
+
+            elif resposta == "pula":
+                if pulos == 0:
+                    print("Não deu! Você não tem mais direito a pulos!")
+                    input("Aperte ENTER para continuar...\n")
+                    print(questao_para_texto(questao, numero_questao))
+                    continue
+
+                pulos -= 1
+                print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
+                input("Aperte ENTER para continuar...\n")
+                numero_questao += 1
+                break
+
+            elif resposta == "parar":
+                premio_atual = premios[indice_premio - 1] if indice_premio > 0 else 0
+
+                confirmacao = input(
+                    f'Deseja mesmo parar [S/N]?? Caso responda "S", sairá com R$ {premio_atual:.2f}! '
+                ).strip().upper()
+
+                while confirmacao not in ["S", "N"]:
+                    print("Opção inválida!")
+                    confirmacao = input(
+                        f'Deseja mesmo parar [S/N]?? Caso responda "S", sairá com R$ {premio_atual:.2f}! '
+                    ).strip().upper()
+
+                if confirmacao == "S":
+                    print(f"\nOk! Você parou e seu prêmio é de R$ {premio_atual:.2f}")
+                    return
+
+    return
+
 
 if __name__ == "__main__":
     main()
