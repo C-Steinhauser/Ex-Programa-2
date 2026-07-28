@@ -25,6 +25,7 @@ def main():
     questoes_sorteadas = []
     premios = [1000, 5000, 10000, 30000, 50000, 100000, 300000, 500000, 1000000]
     indice_premio = 0
+    premio_atual = 0
     numero_questao = 1
     pulos = 3
     ajudas = 2
@@ -49,8 +50,10 @@ def main():
 
             if resposta in ["A", "B", "C", "D"]:
                 if resposta == questao["correta"]:
+                    premio_atual = premios[indice_premio]
                     indice_premio += 1
-                    print(f"\nVocê acertou! Seu prêmio atual é de R$ {premios[indice_premio - 1]:.2f}")
+
+                    print(f"\nVocê acertou! Seu prêmio atual é de R$ {premio_atual:.2f}")
 
                     if indice_premio == len(premios):
                         print("\nPARABÉNS, você zerou o jogo e ganhou um milhão de reais!")
@@ -86,7 +89,13 @@ def main():
                 ajudas -= 1
                 ajuda_usada_nesta_questao = True
 
-                print(f"Ok, lá vem ajuda! Você ainda tem {ajudas} ajudas!")
+                if ajudas == 0:
+                    print("Ok, lá vem ajuda! ATENÇÃO: Você não tem mais direito a ajudas!")
+                elif ajudas == 1:
+                    print("Ok, lá vem ajuda! Você ainda tem 1 ajuda!")
+                else:
+                    print(f"Ok, lá vem ajuda! Você ainda tem {ajudas} ajudas!")
+
                 input("Aperte ENTER para continuar...\n")
                 print(gera_ajuda(questao))
                 input("Aperte ENTER para continuar...\n")
@@ -100,13 +109,24 @@ def main():
                     continue
 
                 pulos -= 1
-                print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
+
+                if pulos == 0:
+                    print("Ok, pulando! ATENÇÃO: Você não tem mais direito a pulos!")
+                elif pulos == 1:
+                    print("Ok, pulando! Você ainda tem 1 pulo!")
+                else:
+                    print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
+
                 input("Aperte ENTER para continuar...\n")
                 numero_questao += 1
                 break
 
             elif resposta == "parar":
-                premio_atual = premios[indice_premio - 1] if indice_premio > 0 else 0
+                if indice_premio == 0:
+                    print("Você ainda não possui prêmio para retirar!")
+                    input("Aperte ENTER para continuar...\n")
+                    print(questao_para_texto(questao, numero_questao))
+                    continue
 
                 confirmacao = input(
                     f'Deseja mesmo parar [S/N]?? Caso responda "S", sairá com R$ {premio_atual:.2f}! '
@@ -121,9 +141,6 @@ def main():
                 if confirmacao == "S":
                     print(f"\nOk! Você parou e seu prêmio é de R$ {premio_atual:.2f}")
                     return
-
-    return
-
 
 if __name__ == "__main__":
     main()
