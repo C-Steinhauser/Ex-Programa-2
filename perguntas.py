@@ -31,7 +31,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           {'titulo': 'Qual destes idiomas é falado na Alemanha?',
           'nivel': 'facil',
           'opcoes': {'A': 'Klingon','B': 'Élfico','C': 'Alemão','D': 'Khuzdul'},
-          'correta': 'C'}
+          'correta': 'C'},
 
          {'titulo': 'Qual destas não é uma fruta?',
           'nivel': 'facil',
@@ -86,7 +86,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
          {'titulo': 'Quantas estrelas há acima do escudo da seleção da Alemanha em sua camisa?',
           'nivel': 'medio',
           'opcoes': {'A': '3','B': '4','C': '5','D': '6'},
-          'correta': 'B'}
+          'correta': 'B'},
 
          {'titulo': 'Quem é considerada a primeira pessoa programadora do mundo?!',
           'nivel': 'medio',
@@ -106,7 +106,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
          {'titulo': 'Qual destas marcas de automóveis é alemã?',
           'nivel': 'medio',
           'opcoes': {'A': 'Toyota','B': 'Hyundai','C': 'BMW','D': 'Volvo'},
-          'correta': 'C'}
+          'correta': 'C'},
 
          {'titulo': 'Como faço para chamar o SAMU?',
           'nivel': 'medio',
@@ -156,7 +156,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           {'titulo': 'Qual destes doces é tradicionalmente associado à Alemanha?',
           'nivel': 'medio',
           'opcoes': {'A': 'Floresta Negra','B': 'Torta alemã','C': 'Chucrute','D': 'Tiramisù'},
-          'correta': 'A'}
+          'correta': 'A'},
 
          {'titulo': 'Qual o número atômico do nitrogênio?',
           'nivel': 'dificil',
@@ -171,7 +171,7 @@ quest = [{'titulo': 'Qual o resultado da operação 57 + 32?',
         {'titulo': 'Quem marcou o gol do título da Alemanha na final da Copa do Mundo de 2014?',
           'nivel': 'dificil',
           'opcoes': {'A': 'Miroslav Klose', 'B': 'Mesut Özil', 'C': 'Mario Götze', 'D': 'Thomas Müller'},
-          'correta': 'C'}
+          'correta': 'C'},
          
          {'titulo': 'Quantos gols Pelé fez oficialmente?',
           'nivel': 'dificil',
