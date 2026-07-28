@@ -88,7 +88,7 @@ def sorteia_questao_inedita(questoes, nivel, questoes_sorteadas):
 
 def questao_para_texto(questao, id):
     texto = "----------------------------------------\n"
-    texto += f"QUESTAO {id}\n\n"
+    texto += f"\033[96mQUESTAO {id}\033[0m\n\n"
     texto += questao["titulo"] + "\n\n"
     texto += "RESPOSTAS:\n"
     texto += f"A: {questao['opcoes']['A']}\n"

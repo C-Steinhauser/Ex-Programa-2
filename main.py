@@ -1,9 +1,18 @@
 from perguntas import quest
 from funcoes import *
 
+VERMELHO = "\033[91m"
+VERDE = "\033[92m"
+AMARELO = "\033[93m"
+AZUL = "\033[94m"
+CIANO = "\033[96m"
+ROXO = "\033[95m"
+NEGRITO = "\033[1m"
+RESET = "\033[0m"
+
 
 def main():
-    print("Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!\n")
+    print(f"{CIANO}Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!{RESET}\n")
 
     nome = input("Qual seu nome? ").strip().upper()
 
@@ -44,7 +53,7 @@ def main():
             resposta = input("\nQual sua resposta?! ").strip()
 
             while resposta not in opcoes_validas:
-                print("Opção inválida!")
+                print(f"{AMARELO}Opção inválida!{RESET}")
                 print('As opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!\n')
                 resposta = input("Qual sua resposta?! ").strip()
 
@@ -53,24 +62,24 @@ def main():
                     premio_atual = premios[indice_premio]
                     indice_premio += 1
 
-                    print(f"\nVocê acertou! Seu prêmio atual é de R$ {premio_atual:.2f}")
+                    print(f"\n{VERDE}Você acertou! Seu prêmio atual é de R$ {premio_atual:.2f}{RESET}")
 
                     if indice_premio == len(premios):
-                        print("\nPARABÉNS, você zerou o jogo e ganhou um milhão de reais!")
+                        print(f"\n{VERDE}{NEGRITO}PARABÉNS, você zerou o jogo e ganhou UM MILHÃO DE REAIS!!{RESET}")
                         return
 
                     if indice_premio == 3:
                         nivel = "medio"
-                        print("\nHEY! Você passou para o nível MEDIO!")
+                        print(f"\n{ROXO}HEY! Você passou para o nível MEDIO!{RESET}")
                     elif indice_premio == 6:
                         nivel = "dificil"
-                        print("\nHEY! Você passou para o nível DIFICIL!")
+                        print(f"\n{ROXO}HEY! Você passou para o nível MEDIO!{RESET}")
 
                     input("Aperte ENTER para continuar...\n")
                     numero_questao += 1
                     break
                 else:
-                    print("\nQue pena! Você errou e vai sair sem nada :(")
+                    print(f"\n{VERMELHO}Que pena! Você errou e vai sair sem nada :({RESET}")
                     return
 
             elif resposta == "ajuda":
@@ -97,7 +106,7 @@ def main():
                     print(f"Ok, lá vem ajuda! Você ainda tem {ajudas} ajudas!")
 
                 input("Aperte ENTER para continuar...\n")
-                print(gera_ajuda(questao))
+                print(f"{AZUL}{gera_ajuda(questao)}{RESET}")
                 input("Aperte ENTER para continuar...\n")
                 print(questao_para_texto(questao, numero_questao))
 
@@ -133,7 +142,7 @@ def main():
                 ).strip().upper()
 
                 while confirmacao not in ["S", "N"]:
-                    print("Opção inválida!")
+                    print(f"{AMARELO}Opção inválida!{RESET}")
                     confirmacao = input(
                         f'Deseja mesmo parar [S/N]?? Caso responda "S", sairá com R$ {premio_atual:.2f}! '
                     ).strip().upper()
